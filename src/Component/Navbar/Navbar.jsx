@@ -29,13 +29,13 @@ const Navbar = () => {
             {navItem}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Task Magnet</a>
+        <a className="btn btn-ghost text-xl">Task <span className=" text-teal-600">Magnet</span></a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navItem}</ul>
       </div>
       <div className="navbar-end">
-        <Link className="btn bg-teal-600 text-white">Login</Link>
+        <Link to={'/login'} className="btn bg-teal-600 hover:bg-green-800 text-white">Login</Link>
       </div>
     </div>
   );
