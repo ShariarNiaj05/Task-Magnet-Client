@@ -9,6 +9,7 @@ import Register from "../../Component/Register/Register";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import DashboardLayout from "../../Layout/DashboardLayout/DashboardLayout";
 import TaskManagement from "../../Pages/Dashboard/TaskManagement/TaskManagement";
+import CreateNewTask from "../../Pages/Dashboard/CreateNewTask/CreateNewTask";
 
 const router = createBrowserRouter([
   {
@@ -52,7 +53,11 @@ const router = createBrowserRouter([
       {
         path: '/dashboard',
         element: <TaskManagement></TaskManagement>
-      }
+      },
+      {
+        path: 'create-task',
+        element: <CreateNewTask></CreateNewTask>
+      },
     ]
   },
 ]);

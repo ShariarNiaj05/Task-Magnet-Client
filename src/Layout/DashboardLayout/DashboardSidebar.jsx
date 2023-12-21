@@ -97,9 +97,9 @@ const navItem = (
     <NavLink to={"/dashboard"} className={activeLinkStyle}>
       Task Management
     </NavLink>
-    {/* <NavLink to={"/"} className={activeLinkStyle}>
-      Home
-    </NavLink> */}
+    <NavLink to={"/dashboard/create-task"} className={activeLinkStyle}>
+      Create New Task
+    </NavLink>
     
   </>
 );

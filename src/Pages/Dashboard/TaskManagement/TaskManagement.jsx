@@ -1,11 +1,10 @@
-import CreateNewTask from "../CreateNewTask/CreateNewTask";
 import TaskList from "../TaskList/TaskList";
 
 const TaskManagement = () => {
-  return (
+   
+    
+    return (
     <div>
-      {/* Create new task */}
-          <CreateNewTask></CreateNewTask>
           
           {/* Task List  */}
           <TaskList></TaskList>

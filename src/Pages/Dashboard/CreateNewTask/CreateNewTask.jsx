@@ -2,11 +2,13 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useTaskList from "../../../Hooks/useTaskList";
 // import "./styles.css";
 
 const CreateNewTask = () => {
     const { user } = useAuth()
     const axiosSecure = useAxiosSecure()
+    const [taskList, taskLoading, refetch] = useTaskList()
   const {
     register,
     handleSubmit,
@@ -35,7 +37,10 @@ const CreateNewTask = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-        }
+            
+          
+          refetch()
+          }
     });
       
   };
