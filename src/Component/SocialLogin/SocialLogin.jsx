@@ -25,7 +25,7 @@ const SocialLogin = () => {
             title: "Login Successful",
             text: "Happy Journey",
           });
-          navigate("/");
+          navigate("/dashboard");
         }
 
         // navigate("/");
