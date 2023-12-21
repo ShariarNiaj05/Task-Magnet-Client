@@ -1,7 +1,29 @@
 import PropTypes from "prop-types";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+const navigate = useNavigate()
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Logout Successful",
+        });
+        navigate('/')
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: `${error.message}`,
+          text: "Something went wrong!",
+        });
+      });
+  };
+
   return (
     <div className="navbar ">
       <div className="navbar-start">
@@ -29,13 +51,29 @@ const Navbar = () => {
             {navItem}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Task <span className=" text-teal-600">Magnet</span></a>
+        <a className="btn btn-ghost text-xl">
+          Task <span className=" text-teal-600">Magnet</span>
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navItem}</ul>
       </div>
       <div className="navbar-end">
-        <Link to={'/login'} className="btn bg-teal-600 hover:bg-green-800 text-white">Login</Link>
+        {user?.email ? (
+          <button
+            onClick={handleLogOut}
+            className=" btn bg-teal-600 hover:bg-green-800 text-white"
+          >
+            Logout
+          </button>
+        ) : (
+          <Link
+            to={"/login"}
+            className="btn bg-teal-600 hover:bg-green-800 text-white"
+          >
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );
