@@ -1,7 +1,12 @@
 import { useForm } from "react-hook-form";
+import useAuth from "../../../Hooks/useAuth";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 // import "./styles.css";
 
 const CreateNewTask = () => {
+    const { user } = useAuth()
+    const axiosSecure = useAxiosSecure()
   const {
     register,
     handleSubmit,
@@ -9,14 +14,30 @@ const CreateNewTask = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    const taskInfo = {
+      const taskInfo = {
+        email: user?.email,
       title: data.title,
       description: data.description,
       deadline: data.deadline,
-      priority: data.priority,
+        priority: data.priority,
+      taskStatus: 'todo'
     };
 
-    console.log(taskInfo);
+      console.log(taskInfo);
+      
+      axiosSecure.put("/tasks", taskInfo).then((res) => {
+        if (res.data.insertedId) {
+          console.log("Task added to DB");
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Task Added in To Do List",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+    });
+      
   };
 
   //   console.log(watch("example"));
@@ -104,7 +125,9 @@ const CreateNewTask = () => {
             className="btn bg-teal-600 hover:bg-green-800 text-white"
           />
         </div>
-      </form>
+          </form>
+          
+
     </div>
   );
 };
