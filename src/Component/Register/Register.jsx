@@ -39,12 +39,11 @@ const Register = () => {
               title: "User Created Successfully",
               text: "Happy Journey",
             });
-            navigate("/");
+            navigate("/dashboard");
           })
           .catch((error) => {
             console.log(error);
           });
-        // navigate(location?.state ? location.state : '/' )
       })
       .catch((error) => {
         console.log(error);

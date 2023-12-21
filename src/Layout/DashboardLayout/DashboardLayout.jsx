@@ -1,19 +1,22 @@
-import PropTypes from 'prop-types'
-import { Outlet } from 'react-router-dom';
- 
+import PropTypes from "prop-types";
+import { Outlet } from "react-router-dom";
+import DashboardSidebar from "./DashboardSidebar";
+
 const DashboardLayout = () => {
- return (
-    <div> 
-         
-       <Outlet></Outlet>
+  return (
+    <div className=" flex flex-col md:flex-row gap-10 w-full p-10">
+      <div className=" md:w-64">
+        <DashboardSidebar></DashboardSidebar>
+      </div>
+      <div className=" flex-1">
+        <Outlet></Outlet>
+      </div>
     </div>
- )
-}
- 
-export default DashboardLayout
- 
- 
+  );
+};
+
+export default DashboardLayout;
+
 DashboardLayout.propTypes = {
- 
- props: PropTypes.any, 
+  props: PropTypes.any,
 };

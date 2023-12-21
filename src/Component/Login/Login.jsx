@@ -26,7 +26,7 @@ const Login = () => {
           title: "Login Successful",
           text: "Happy Journey",
         });
-        navigate("/");
+        navigate("/dashboard");
       })
 
       .catch((error) => {
