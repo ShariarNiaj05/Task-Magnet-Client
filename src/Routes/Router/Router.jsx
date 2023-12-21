@@ -6,6 +6,9 @@ import Support from "../../Pages/Support/Support";
 import Blog from "../../Pages/Blog/Blog";
 import Login from "../../Component/Login/Login";
 import Register from "../../Component/Register/Register";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import DashboardLayout from "../../Layout/DashboardLayout/DashboardLayout";
+import TaskManagement from "../../Pages/Dashboard/TaskManagement/TaskManagement";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +40,20 @@ const router = createBrowserRouter([
         element: <Register></Register>,
       },
     ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: '/dashboard',
+        element: <TaskManagement></TaskManagement>
+      }
+    ]
   },
 ]);
 

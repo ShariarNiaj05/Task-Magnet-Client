@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types'
+import { Outlet } from 'react-router-dom';
  
 const DashboardLayout = () => {
  return (
     <div> 
-         I am available from DashboardLayout 
+         
+       <Outlet></Outlet>
     </div>
  )
 }
