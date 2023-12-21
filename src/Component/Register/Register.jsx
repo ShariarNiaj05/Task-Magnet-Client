@@ -3,10 +3,10 @@ import useAuth from "../../Hooks/useAuth";
 import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
 import auth from "../../Firebase/firebase.config";
+import SocialLogin from "../SocialLogin/SocialLogin";
 const Register = () => {
-  const { createUser } = useAuth()
-  const navigate = useNavigate()
-  const location = useLocation()
+  const { createUser } = useAuth();
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -21,40 +21,39 @@ const Register = () => {
       name,
       password,
       photo,
-      };
-      console.log(newUser);
+    };
+    console.log(newUser);
 
-      createUser(email, password)
-      .then(result => {
-          console.log(result.user);
+    createUser(email, password)
+      .then((result) => {
+        console.log(result.user);
 
-          updateProfile(auth.currentUser, {
-              displayName: name,
-              photoURL: photo
+        updateProfile(auth.currentUser, {
+          displayName: name,
+          photoURL: photo,
+        })
+          .then(() => {
+            console.log("profile Updated");
+            Swal.fire({
+              icon: "success",
+              title: "User Created Successfully",
+              text: "Happy Journey",
+            });
+            navigate("/");
           })
-              .then(() => {
-                  console.log('profile Updated');
-                  Swal.fire({
-                      icon: 'success',
-                      title: 'User Created Successfully',
-                      text: 'Happy Journey',      
-                    })
-              })
-              .catch(error => {
-                  console.log(error);
-                 
-          })
-          // navigate(location?.state ? location.state : '/' )
-
-  })
-      .catch(error => {
-          console.log(error);
-          Swal.fire({
-              icon: 'error',
-              title: `${error.message}`,
-              text: 'Something went wrong!',
-            })
-  })
+          .catch((error) => {
+            console.log(error);
+          });
+        // navigate(location?.state ? location.state : '/' )
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire({
+          icon: "error",
+          title: `${error.message}`,
+          text: "Something went wrong!",
+        });
+      });
   };
   return (
     <div>
@@ -148,6 +147,7 @@ const Register = () => {
                     </Link>
                   </div>
                 </form>
+                <SocialLogin></SocialLogin>
               </div>
             </div>
           </div>

@@ -2,7 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 // import useAxiosSecure from "../../Hooks/useAxiosSecure";
-// import SocialLogin from "../SocialLogin/SocialLogin";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
   const { signIn } = useAuth();
@@ -98,6 +98,7 @@ const Login = () => {
                     </Link>
                   </div>
                 </form>
+                <SocialLogin></SocialLogin>
               </div>
             </div>
           </div>
