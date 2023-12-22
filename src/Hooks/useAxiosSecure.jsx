@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000", 
+  baseURL: "https://task-magnet-server.vercel.app",  //"http://localhost:5000"
 //   withCredentials: true,
 });
 

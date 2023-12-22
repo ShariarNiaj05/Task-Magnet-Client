@@ -65,6 +65,7 @@ const TaskList = () => {
 
   const [, drag] = useDrag({
     type: "TASK",
+    // item: { id: task._id },
   });
 
   const [, drop] = useDrop({
@@ -74,11 +75,12 @@ const TaskList = () => {
 
   const [, dragOngoing] = useDrag({
     type: "TASK",
+    
   });
 
   const [, dropOngoing] = useDrop({
     accept: "TASK",
-    drop: (item) => handleTaskDrop(item.id, "ongoing"),
+    drop: (item) => handleTaskDrop(item.id, "onGoing"),
   });
 
   const [, dragCompleted] = useDrag({
@@ -90,7 +92,48 @@ const TaskList = () => {
     drop: (item) => handleTaskDrop(item.id, "completed"),
   });
 
-  const handleUpdateTask = async (id) => {};
+  const handleUpdateTask = async (id) => { };
+
+  const handleToDo = async (id) => {
+    console.log(id);
+    {
+      await axiosSecure.patch(`/tasks/changeStatus/${id}`, {taskStatus: 'todo'});
+      Swal.fire({
+        title: "Task Status Change!",
+        text: "One task has been Updated.",
+        icon: "success",
+      });
+      refetch();
+    }
+  }
+  
+  const handleOnGoing = async (id) => {
+    console.log(id);
+    {
+      await axiosSecure.patch(`/tasks/changeStatus/${id}`, {taskStatus: 'onGoing'});
+      Swal.fire({
+        title: "Task Status Change!",
+        text: "One task has been Updated.",
+        icon: "success",
+      });
+      refetch();
+    }
+  }
+
+  const handleCompleted = async (id) => {
+    console.log(id);
+    {
+      await axiosSecure.patch(`/tasks/changeStatus/${id}`, {taskStatus: 'completed'});
+      Swal.fire({
+        title: "Task Status Change!",
+        text: "One task has been Updated.",
+        icon: "success",
+      });
+      refetch();
+    }
+  }
+
+
   const handleDelete = async (id) => {
     try {
       const result = await Swal.fire({
@@ -119,8 +162,9 @@ const TaskList = () => {
 
   const handleTaskDrop = async (taskId, newStatus) => {
     try {
-      await axiosSecure.patch(`/tasks/${taskId}`, { taskStatus: newStatus });
-      refetch();
+      console.log('Dropped Task ID:', taskId);
+      // await axiosSecure.patch(`/tasks/${taskId}`, { taskStatus: newStatus });
+      // refetch();
     } catch (error) {
       console.error("Error updating task status:", error);
     }
@@ -158,6 +202,28 @@ const TaskList = () => {
         >
           <MdDeleteForever />
         </button>
+
+
+        <button
+          onClick={() => handleToDo(task._id)}
+          className="btn  bg-slate-200"
+        >
+          To Do
+        </button>
+
+        <button
+          onClick={() => handleOnGoing(task._id)}
+          className="btn  bg-slate-200"
+        >
+          On Going
+        </button>
+
+        <button
+          onClick={() => handleCompleted(task._id)}
+          className="btn  bg-slate-200"
+        >
+          Completed
+        </button>
       </div>
     </>
   );
@@ -185,7 +251,7 @@ const TaskList = () => {
         <hr />
         <div>
           {tasks
-            .filter((task) => task.taskStatus === "ongoing")
+            .filter((task) => task.taskStatus === "onGoing")
             .map((singleTask) => (
               <div
                 key={singleTask._id}
