@@ -100,6 +100,9 @@ const navItem = (
     <NavLink to={"/dashboard/create-task"} className={activeLinkStyle}>
       Create New Task
     </NavLink>
+    <NavLink to={"/dashboard/profile"} className={activeLinkStyle}>
+    Profile
+    </NavLink>
     
     
   </>

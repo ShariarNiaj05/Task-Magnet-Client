@@ -11,6 +11,7 @@ import DashboardLayout from "../../Layout/DashboardLayout/DashboardLayout";
 import TaskManagement from "../../Pages/Dashboard/TaskManagement/TaskManagement";
 import CreateNewTask from "../../Pages/Dashboard/CreateNewTask/CreateNewTask";
 import EditTask from "../../Pages/Dashboard/EditTask/EditTask";
+import Profile from "../../Pages/Dashboard/Profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: 'update/:id',
         element: <EditTask></EditTask>
+      },
+      {
+        path: 'profile',
+        element: <Profile></Profile>
       },
     ]
   },

@@ -163,16 +163,16 @@ const TaskList = () => {
   );
 
   return (
-    <div className="mt-10 flex justify-evenly w-full">
+    <div className="mt-10 flex flex-col lg:flex-row flex-wrap justify-evenly w-full">
       {/* Task to do */}
-      <div ref={drop} className="p-2 shadow-lg w-1/3">
+      <div ref={drop} className="p-2 shadow-lg lg:w-1/3">
         <h2 className="font-bold text-2xl text-center">To Do</h2>
         <hr />
         <div>
           {tasks
             .filter((task) => task.taskStatus === "todo")
             .map((singleTask) => (
-              <div key={singleTask._id} ref={drag} className="shadow-lg p-3">
+              <div key={singleTask._id} ref={drag} className="shadow-lg p-3 ">
                 {renderTask(singleTask)}
               </div>
             ))}
@@ -180,7 +180,7 @@ const TaskList = () => {
       </div>
 
       {/* Task ongoing */}
-      <div ref={dropOngoing} className="p-2 shadow-lg w-1/3">
+      <div ref={dropOngoing} className="p-2 shadow-lg lg:w-1/3">
         <h2 className="font-bold text-2xl text-center">On Going</h2>
         <hr />
         <div>
@@ -199,7 +199,7 @@ const TaskList = () => {
       </div>
 
       {/* Task completed */}
-      <div ref={dropCompleted} className="p-2 shadow-lg w-1/3">
+      <div ref={dropCompleted} className="p-2 shadow-lg lg:w-1/3">
         <h2 className="font-bold text-2xl text-center">Completed</h2>
         <hr />
         <div>
