@@ -12,6 +12,7 @@ import TaskManagement from "../../Pages/Dashboard/TaskManagement/TaskManagement"
 import CreateNewTask from "../../Pages/Dashboard/CreateNewTask/CreateNewTask";
 import EditTask from "../../Pages/Dashboard/EditTask/EditTask";
 import Profile from "../../Pages/Dashboard/Profile/Profile";
+import TestDND from "../../Pages/Dashboard/TestDND/TestDND";
 
 const router = createBrowserRouter([
   {
@@ -52,12 +53,12 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
-      {
+      /* {
         path: '/dashboard',
         element: <TaskManagement></TaskManagement>
-      },
+      }, */
       {
-        path: 'create-task',
+        path: '/dashboard',
         element: <CreateNewTask></CreateNewTask>
       },
       {
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: 'profile',
         element: <Profile></Profile>
+      },
+      {
+        path: 'test',
+        element: <TestDND></TestDND>
       },
     ]
   },

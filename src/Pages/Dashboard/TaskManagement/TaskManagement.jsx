@@ -8,7 +8,9 @@ const TaskManagement = () => {
       <div>
         <TaskList></TaskList>
       </div>
+      
     </DndProvider>
+    
   );
 };
 

@@ -94,12 +94,17 @@ const activeLinkStyle = ({ isActive, isPending }) =>
 
 const navItem = (
   <>
-    <NavLink to={"/dashboard"} className={activeLinkStyle}>
+   {/*  <NavLink to={"/dashboard"} className={activeLinkStyle}>
       Task Management
-    </NavLink>
-    <NavLink to={"/dashboard/create-task"} className={activeLinkStyle}>
+    </NavLink> */}
+    <NavLink to={"/dashboard"} className={activeLinkStyle}>
       Create New Task
     </NavLink>
+
+    <NavLink to={"/dashboard/test"} className={activeLinkStyle}>
+    Task Management
+    </NavLink>
+    
     <NavLink to={"/dashboard/profile"} className={activeLinkStyle}>
     Profile
     </NavLink>
