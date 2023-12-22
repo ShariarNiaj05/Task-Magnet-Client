@@ -10,6 +10,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import DashboardLayout from "../../Layout/DashboardLayout/DashboardLayout";
 import TaskManagement from "../../Pages/Dashboard/TaskManagement/TaskManagement";
 import CreateNewTask from "../../Pages/Dashboard/CreateNewTask/CreateNewTask";
+import EditTask from "../../Pages/Dashboard/EditTask/EditTask";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: 'create-task',
         element: <CreateNewTask></CreateNewTask>
+      },
+      {
+        path: 'update/:id',
+        element: <EditTask></EditTask>
       },
     ]
   },

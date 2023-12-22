@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
-const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -13,7 +13,7 @@ const navigate = useNavigate()
           icon: "success",
           title: "Logout Successful",
         });
-        navigate('/')
+        navigate("/");
       })
       .catch((error) => {
         Swal.fire({
@@ -60,12 +60,19 @@ const navigate = useNavigate()
       </div>
       <div className="navbar-end">
         {user?.email ? (
-          <button
-            onClick={handleLogOut}
-            className=" btn bg-teal-600 hover:bg-green-800 text-white"
-          >
-            Logout
-          </button>
+          <div>
+            <Link to={"/dashboard"}>
+              <button className=" btn bg-teal-600 hover:bg-green-800 text-white">
+                Dashboard
+              </button>
+            </Link>
+            <button
+              onClick={handleLogOut}
+              className=" btn bg-teal-600 hover:bg-green-800 text-white"
+            >
+              Logout
+            </button>
+          </div>
         ) : (
           <Link
             to={"/login"}

@@ -5,7 +5,7 @@ const Blog = () => {
         Explore Our <span className=" text-teal-600">Blog Post</span>
       </h2>
 
-      <div className=" grid grid-cols-2 gap-5">
+      <div className=" grid grid-cols-1 md:grid-cols-2 gap-5">
         <div className="hero shadow-lg">
           <div className="hero-content flex-col lg:flex-row">
             <img
